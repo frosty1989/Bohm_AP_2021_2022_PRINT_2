@@ -1,0 +1,199 @@
+﻿\documentclass[a4paper,12pt]{report}                         %print on one side
+%\documentclass[a4paper,12pt, twoside,notitlepage,openright]{report} %print on both side
+\usepackage[bookmarks=false, colorlinks=false,unicode]{hyperref}
+\usepackage[abbr,dcucite]{harvard}      %style ofliterature
+\usepackage{index}                      %make index
+%\makeindex
+\usepackage{Styles/SOC}
+%\usepackage{showframe}                  %show edges of pages (for oneside, comment line
+                                            %\setlength{\oddsidemargin}{5mm} in COP.sty)
+
+
+
+%-----<<<<<<<<<<<< NAMES NAD PATHS >>>>>>>>>>>>-----
+\def \Bookname {Interaktivní aplikace pro výuku algoritmů}
+\def \BooknameEN {Interactive Application for Algorithm Education}
+\def \BookNameHead {Interaktivní aplikace pro výuku algoritmů}
+\def \Author {David Martínek}
+\def \Year {2018}
+\def \StudyFieldNumber {18}
+\def \StudyField {Informatika}
+\def \Supervisor {Ing.~Jiří Roubal}
+\def \APforPrint {1}
+
+\def \BookName {STŘEDOŠKOLSKÁ ODBORNÁ ČINNOST}
+\def \HEAD {STŘEDOŠKOLSKÁ ODBORNÁ ČINNOST}
+\def \SCHOOL {VOŠ, SŠ, COP Sezimovo Ústí, Budějovická 421,}
+\def \FACULTY {391~02 Sezimovo Ústí}
+\def \Place {Sezimovo Ústí}
+
+\def \cestaFiles {00_files/}
+\def \cestaJedna {01_Intro/}
+\def \cestaDva {02_Chapter2/}
+\def \cestaTri {03_Chapter3/}
+\def \cestaCtyri {04_Chapter4/}
+\def \cestaPet {05_Chapter5/}
+\def \cestaZaver {05_Concl/}
+\def \cestaAP {A_Appendices/}
+\def \cestaStyles {Styles/}
+
+\newindex{default}{idx}{ind}{Rejst\v r\'ik}
+
+\newcounter{YearOld} \setcounter{YearOld}{\Year} \addtocounter{YearOld}{-1}
+%-----<<< --------------------------------- >>>-----
+
+
+
+%-----<<<<<<<<<<<< DOCUMENT >>>>>>>>>>>>-----
+\begin{document}
+
+
+%-----<<< BINDING >>>-----
+%\iffalse
+\pagestyle{empty}                       %no pagination
+\input{\cestaFiles Binding.tex}         %input file
+\cleardoublepage
+%-----<<< ------- >>>-----
+
+
+%-----<<< EMPTY PAGE - VAKÁT >>>-----
+%\thispagestyle{empty}
+%\begin{verbatim}
+
+%\end{verbatim}
+%\cleardoublepage
+%\fi
+%-----<<< --------------------- >>>-----
+
+
+%-----<<< TITLE PAGE >>>-----
+\pagestyle{empty}                       %no pagination
+\BookHeadDP
+\cleardoublepage
+%-----<<< ---- >>>-----
+
+
+%-----<<< TASK AP >>>-----
+\pagestyle{plain}                       %pagination
+\pagenumbering{Roman}                   %start roman pagination from 1
+%$ $
+%\input{\cestaFiles Task.tex}            %input file
+%\cleardoublepage
+%-----<<< ------------------------- >>>-----
+
+
+%-----<<< DECLARATION >>>-----
+$ $
+\input{\cestaFiles DeclarSOC.tex}       %input file
+\newpage
+%-----<<< ----------- >>>-----
+
+
+%-----<<< ACKNOWLEDGEMENT >>>-----
+$ $
+\input{\cestaFiles Acknow.tex}          %input file
+\newpage
+%-----<<< --------------- >>>-----
+
+
+%-----<<< ANNOTATION >>>-----
+\input{\cestaFiles AnnotationSOC.tex}   %input file
+\cleardoublepage
+%-----<<< ---------- >>>-----
+
+
+%-----<<< TABLE OF CONTENTS >>>-----
+\setcounter{secnumdepth}{4}             %number of section to 4
+\setcounter{tocdepth}{4}                %number of section in table of contents greater then 3
+\tableofcontents
+\cleardoublepage
+%-----<<< ----------------- >>>-----
+
+
+%-----<<< USABLE SYMBOLS >>>-----
+\input{\cestaFiles Abbreviation.tex}
+\cleardoublepage
+%-----<<< ----------------- >>>-----
+
+
+%-----<<< TABLE OF FIGURES >>>-----
+%\addcontentsline{toc}{chapter}{Seznam obrázků}
+%\listoffigures
+%\cleardoublepage
+%-----<<< ---------------- >>>-----
+
+
+%-----<<< TABLE OF TABLES >>>-----
+%\addcontentsline{toc}{chapter}{Seznam tabulek}
+%\listoftables
+%\cleardoublepage
+%-----<<< --------------- >>>-----
+
+
+%-----<<< CHAPTERS >>>-----
+\pagenumbering{arabic}                  %start arabic pagination from 1
+\hyphenation{Automatica}                %no divide words
+\pagestyle{fancy} \fancyhf{} \lhead{\BookNameHead~--~\Author} \rhead{\Year} \cfoot{\thepage}
+\setcounter{footnote}{0}
+
+\input{\cestaJedna Intro.tex}           %input file
+\input{\cestaDva Chapter2.tex}
+\input{\cestaTri Chapter3.tex}
+\input{\cestaCtyri Chapter4.tex}
+\input{\cestaZaver Concl.tex}
+%-----<<< -------- >>>-----
+
+
+%-----<<< REFERENCES >>>-----
+\bibliographystyle{\cestaStyles COP}
+\bibliography{\cestaStyles Refer,\cestaStyles Refer_BP}%references from BIBTEX
+\addcontentsline{toc}{chapter}{Literatura}
+
+%\iffalse
+\input{\cestaStyles Refer.tex}          %input file
+%\fi
+\newpage\thispagestyle{empty}
+%-----<<< ---------- >>>-----
+
+
+%-----<<< TABLE OF FIGURES >>>-----
+\addcontentsline{toc}{chapter}{Seznam obrázků}
+\listoffigures
+\cleardoublepage
+%-----<<< ---------------- >>>-----
+
+
+%-----<<< TABLE OF TABLES >>>-----
+%\addcontentsline{toc}{chapter}{Seznam tabulek}
+%\listoftables
+%\cleardoublepage
+%-----<<< --------------- >>>-----
+
+
+
+%-----<<< APPENDIXS >>>-----
+\cleardoublepage
+\def\appendixname{Příloha}
+%\pagenumbering{Roman}                  %start arabic pagination from 1
+\begin{appendix}
+\input{\cestaAP Appends.tex}            %input file
+\input{Styles/Manual_tex.tex}           %input file
+\input{Styles/Manual_typo.tex}          %input file
+\input{Styles/Manual_final.tex}         %input file
+\end{appendix}
+%-----<<< --------- >>>-----
+
+
+
+%-----<<< INDEX >>>-----
+%\iffalse
+\cleardoublepage \addcontentsline{toc}{chapter}{Rejstřík}
+\printindex
+
+\textcolor{blue}{\em Tento text se nachází v~souboru\/ {\rm\texttt{SOC.tex} na řádcích 193-203}. Pro odstranění rejstříku, odkomentujte v~souboru {\rm \texttt{SOC.tex}} řádky 193\?: $\backslash$\texttt{iffalse} a~203\?:
+$\backslash$\texttt{fi}.\\[2ex] Pokud chcete vkládat klíčová slova do rejstříku, používejte příkaz $\backslash$\texttt{index\{\}}.}
+%\fi
+%-----<<< ----- >>>-----
+
+\end{document}
+%-----<<<<<<<<< END OF DOCUMENT >>>>>>>>>-----

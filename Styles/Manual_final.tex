@@ -1,0 +1,52 @@
+﻿\chapter{Finální formátování AP v~\LaTeXe \label{ch:Manual_final}}
+
+
+
+Zde je popsáno finální formátování AP v \LaTeXe. Ponechte si na toto finální for\-má\-to\-vá\-ní cca \textcolor{red}{\textbf{20 dní}} (3~týdny na jazykovou korekturu, týden na formátovací korekturu) a~postupujte přesně podle následujícího návodu.
+
+\begin{enumerate}
+    \item Šablona pro AP je připravena pro oboustranný tisk, proto tolik bílých stran na začátku práce. Pokud chcete tisknout jednostranně, odkomentujte v~souboru {\rm \texttt{Diplomka.tex}} řádek~1 a zakomentujte řádek~2.
+    \item Pokud nechcete mít v~práci Rejstřík, odkomentujte v~souboru {\rm \texttt{Diplomka.tex}} řádky~179 a~185, respektive v~souboru \texttt{MP.tex} řádky~189 a~195, respektive v~souboru \texttt{SOC.tex} řádky~189 a~195\?: $\backslash$\texttt{iffalse} a~$\backslash$\texttt{fi}.
+    \item Pokud jste provedli přesně a~všechny tamní pokyny, \textcolor{blue}{\em vymažte barevný text v~souboru \newline \texttt{00\_files/Task.tex}.}
+    \item Pokud jste provedli přesně a~všechny tamní pokyny, \textcolor{blue}{\em vymažte barevný text v~souboru \newline \texttt{00\_files/Deklar.tex}.}
+    \item Vraťte se k~poděkování a~nezapomeňte poděkovat těm, kteří Vám s~prací pomáhali (byla to jejich dobrá vůle), svým blízkým za podporu při studiu, případně škole za finanční podporu Vašeho projektu atd. \textbf{Je naprosto nevhodné někomu poděkovat například za jazykovou korekturu a~pak mít v~práci gramatické chyby apod.} Dejte na to prosím pozor.
+    \item Vraťte se k~anotaci a~zkontrolujte, že obsahuje to, co obsahovat má.
+    \item Zkontrolujte, že je dobře naformátovaný obsah práce, seznam obrázků, seznam tabulek a~záhlaví stránek.
+    \begin{itemize}
+        \item Pokud jsou některé texty v~těchto částech práce příliš dlouhé, použijte alternativní zápis
+            \begin{center}
+                \verb"\chapter[Zkrácený název]{Původní (dlouhý) název}",
+                \verb"\section[Zkrácený název]{Původní (dlouhý) název}",
+                \verb"\caption[Zkrácený název]{Původní (dlouhý) název}".
+            \end{center}
+    \end{itemize}
+    \item Pokud jste provedli přesně a~všechny tamní pokyny, \textcolor{blue}{\em vymažte barevný text v~souboru \newline \texttt{00\_files/Symbols.tex}, respektive \texttt{00\_files/Abbreviation.tex}.}
+    \item \textcolor{red}{Vraťte se k~úvodu práce a~zkontrolujte, že obsahuje \textbf{motivaci}, \textbf{stav řešeného pro\-blé\-mu}, \textbf{cíl práce} a \textbf{strukturu práce}, dle pokynů v~kapitole~\ref{ch:Uvod}.}
+    \item \textcolor{blue}{\em Zkontrolujte sazbu literatury a~její abecední řazení. Poté odkomentujte v~souboru \texttt{Diplomka.tex} řádky 152 a~154, respektive v~souboru \texttt{MP.tex} řádky~152 a~154, respektive v~souboru \texttt{SOC.tex} řádky~152 a~154 \?: $\backslash$\texttt{iffalse} a~$\backslash$\texttt{fi}.}
+    \item Vložte pevné (nerozdělitelné) mezery tam, kde mají být (tj. za jednopísmenné před\-lož\-ky, mezi titul a~jméno atd.).
+    \begin{itemize}
+        \item V~\LaTeX\,\!u je to pomocí symbolu $\sim$. K~vložení symbolu $\sim$ k~jednopísmenným předložkám lze použít skript \verb"vlnka.bat", který spustíte s~parametrem pří\-sluš\-né\-ho \verb"*.tex" souboru.
+    \end{itemize}
+    \item Zkontrolujte, že nemáte na stránkách vynechaná \textcolor{red}{bílá místa} (vyjma posledních strá\-nek příslušných kapitol). \textcolor{red}{Je to nepřípustné!!!}
+    \item Zkontrolujte dělení slov v~celé práci.
+    \begin{itemize}
+        \item Připište do prvního respektive druhého řádku souboru \texttt{Diplomka.tex}, respektive souboru \texttt{MP.tex}, respektive souboru \texttt{SOC.tex} do hranatých závorek parametr \verb"draft" a~klikněte ve \hbox{WinEDT} na ikonu \verb"TeXify" (med\-ví\-dek ve verzi~5.3). Pokud bude nějaké slovo špatně rozděleno, objeví se v~DVI souboru na příslušném místě černý obdélníček. Dělení slov opravíte pomocí \verb"\-".
+        \item Vymažte v~souboru \texttt{Diplomka.tex}, respektive souboru \texttt{MP.tex}, respektive souboru \texttt{SOC.tex} parametr \verb"draft".
+    \end{itemize}
+    \item Klikněte ve WinEDT na ikonu \verb"koš" a~vymažte všechny dočasné soubory. Poté klik\-ně\-te ve WinEDT na ikonu \verb"TeXify" (medvídek ve verzi~5.3), čímž se vytvoří \uv{finální} DVI soubor. Následně otevřete soubor \verb"Diplomka.log", respektive soubor \texttt{MP.log}, respektive soubor \texttt{SOC.log} a~vyhledejte v~něm slova
+        \begin{center}
+            \verb"undefined",\\
+            \verb"multiply".
+        \end{center}
+        Pokud jste nějaká taková slova našli, znamená to, že některý \verb"label" neexistuje respektive je duplicitní. Toto opravte a~zopakujte tento bod.
+    \item \textcolor{blue}{\em Vymažte zbylé barevné texty z~ostatních souborů a~zakomentujte v~\texttt{Diplomka.tex} řádky~170 až~171, respektive v~\texttt{MP.tex} řádky~180 až~181, respektive v~\texttt{SOC.tex} řádky~180 až~181. Dále zakomentujte v~\texttt{Diplomka.tex} přílohy, které nechcete ve své práci mít (řádky~168 až~169).}
+    \item Až budete mít vyrobené desky pro absolventksou práci, odkomentujte v~souboru {\rm \texttt{Diplomka.tex}} řádky~52 {\rm $\backslash$\texttt{iffalse}} a~65 {\rm $\backslash$\texttt{fi}}. Tím tyto desky a~volné stránky z~výsledného PDF zmizí.
+    \item Vymažte všechny "*.bak" soubory.
+    \item \textcolor{brown}{Klikněte ve WinEDT na ikonu {\rm \texttt{koš}} a~vymažte všechny dočasné soubory. Poté klik\-ně\-te ve WinEDT na ikonu {\rm \texttt{TeXify}} (medvídek ve verzi~5.3), čímž se vytvoří finální DVI soubor. Následně klikněte ve WinEDT na ikonu {\rm \texttt{dvipdf}}, čímž se vytvoří finální PDF soubor.}
+    \item Dejte práci k~češtinářské korektuře a~proveďte příslušné opravy.
+    \item \textcolor{dgreen}{\em Zakomentujte v~souboru \texttt{Diplomka.tex} řádek~172 (v~souboru \texttt{MP.tex}, respektive \texttt{SOC.tex} řá\-dek~182). Dále změňte v~\texttt{Diplomka.tex}, respektive \texttt{MP.tex}, respektive \texttt{SOC.tex} na řádku~22 obsah proměnné \texttt{$\backslash$APforPrint} na hodnotu~1. Zopakováním bodu 18 tohoto návodu vygenerujete výsledné PDF pro tisk.}
+    \item \textcolor{dgreen}{\em Změňte v~souboru \texttt{Diplomka.tex}, respektive \texttt{MP.tex}, respektive \texttt{SOC.tex} na řádku 22 obsah pro\-měn\-né \texttt{$\backslash$APforPrint} zpět na hodnotu~0. Zopakováním bodu 18 tohoto návodu vygenerujete výsledné PDF pro CD/DVD a~MOODLE.}
+\end{enumerate}
+
+
+\textcolor{blue}{\em Tento text se nachází v~souboru \texttt{\cestaStyles Manual\_final.tex}. Pro odstranění této pří\-lo\-hy zakomentujte v~\texttt{Diplomka.tex} řádek 172 (v~souboru \texttt{MP.tex}, respektive \texttt{SOC.tex} řádek~182)\?: \newline \texttt{$\backslash$input$\{$\cestaStyles Manual\_final.tex$\}$}.\/} 

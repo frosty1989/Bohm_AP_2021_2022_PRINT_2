@@ -1,0 +1,303 @@
+%%% ====================================================================
+%%% @LaTeX-file{
+%%%   filename  = "COP.sty",
+%%%   version   = "2.00",
+%%%   date      = "2015/06/29",
+%%%   time      = "22:51:10 CET",
+%%%   author    = "Jirka Roubal",
+%%%   copyright = "Copyright 2015, Jirka Roubal,
+%%%                all rights reserved.  Copying of this file is
+%%%                authorized only if either:
+%%%                (1) you make absolutely no changes to your copy,
+%%%                including name; OR
+%%%                (2) if you do make changes, you first rename it
+%%%                to some other name.",
+%%%   address   = "Jirka Roubal,
+%%%                Vyí odborná kola, Støední kola, Centrum odborné pøípravy, 
+%%%                Sezimovo Ústí, Budìjovická 421,
+%%%                Budìjovická 421,
+%%%                391 02 Sezimovo Ústí,
+%%%                Czech Republic",
+%%%   telephone = "+420-381-407-283",
+%%%   FAX       = "",
+%%%   email     = "roubal@copsu.cz",
+%%%   website   = "http://apps.copsu.cz/roubal/",
+%%%   codetable = "ISO/ASCII",
+%%%   keywords  = "latex, amsmath, ntheorem, inputenc, czech",
+%%%   supported = "yes",
+%%%   abstract  = "This is a \LaTeX{} template for student's diploma thesis.",
+%%% }
+%%% ====================================================================
+
+%-----<<< ----------- >>>-----
+%-----<<< USEPACKAGES >>>-----
+\usepackage[cp1250]{inputenc}
+\usepackage[czech]{babel}
+\usepackage{fancyhdr}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[amsmath,thmmarks]{ntheorem}
+\usepackage{latexsym}
+\usepackage[dvips]{graphicx}
+\usepackage{float}
+%\usepackage{picins}                     %text beside figure
+\usepackage[width=.90\textwidth,hang,small]{caption}
+\usepackage{subfigure}                  %text beside figure
+\usepackage[absolute]{textpos}          %figures on backgrounds
+\usepackage{wrapfig}
+\usepackage[dvips]{color}               %for using colors
+%\usepackage{indentfirst}
+\usepackage{Styles/usepackages/chngcntr}
+    \counterwithout*{footnote}{chapter}
+\raggedbottom                           %no vertical justify
+%-----<<< USEPACKAGES >>>-----
+%-----<<< ----------- >>>-----
+
+
+
+%-----<<< ---------------------------------- >>>-----
+%-----<<< PAGE, LINESPREAD, SECTION AND FIGURE DESCRIPTION DEFINITION >>>-----
+\linespread{1.3}                        %line spacing 1.5
+
+\setlength{\oddsidemargin}{0mm}
+\setlength{\topmargin}{0mm}  
+\setlength{\textwidth}{159.2mm}
+\setlength{\textheight}{230mm}
+\setlength{\headheight}{14.5pt}         %height of head
+\setlength{\oddsidemargin}{5mm}         %odd left margin
+\setlength{\evensidemargin}{-\oddsidemargin} %even left margin
+
+\newcommand\titulek{\@startsection {paragraph}{5}{\z@}%
+                                   {-0.5ex \@plus -.1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\LARGE\bfseries}}
+\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+                                    {3.25ex \@plus1ex \@minus.2ex}%
+                                    {-1em}%
+                                    {\normalfont\normalsize\bfseries}}
+\renewcommand\subparagraph{\@startsection{subparagraph}{5}{\parindent}%
+                                       {3.25ex \@plus1ex \@minus .2ex}%
+                                       {-1em}%
+                                      {\normalfont\normalsize\bfseries}}
+\renewcommand\section{\@startsection {section}{1}{\z@}%
+                                   {-8.5ex \@plus -.1ex \@minus -.2ex}%
+                                   {2.3ex \@plus.2ex}%
+                                   {\raggedright\normalfont\Large\bfseries}}
+\renewcommand\subsection{\@startsection{subsection}{2}{\z@}%
+                                     {-5.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\raggedright\normalfont\large\bfseries}}
+\renewcommand\subsubsection{\@startsection{subsubsection}{3}{\z@}%
+                                     {-3.25ex\@plus -1ex \@minus -.2ex}%
+                                     {1.5ex \@plus .2ex}%
+                                     {\raggedright\normalsize\bfseries}}
+
+%\newtheorem{definition}{Definice}[chapter]
+%\newenvironment{Definition}{\begin{definition}\noindent\rm}{\hspace*{\fill}$\Box$\end{definition}\par\bigskip}
+%\newtheorem{proposition}{Vìta}[chapter]
+%\newenvironment{Proposition}{\begin{proposition}\noindent}{\end{proposition}\par\bigskip}
+%\newtheorem{example}{Pøíklad}[chapter]
+%\newenvironment{Example}{\begin{example}\noindent\rm}{\end{example}\par\bigskip}
+
+\theorembodyfont{\normalfont}
+\theoremseparator{\?:}
+\theoremsymbol{\ensuremath{\blacktriangleright}} 
+\newtheorem{definition}{Definice}[chapter]
+
+\theorembodyfont{\em}
+\theoremsymbol{}
+\theoremseparator{\?:}
+\newtheorem{proposition}{Vìta}[chapter]
+
+\theorembodyfont{\normalfont}
+\theoremseparator{\?:}
+\theoremsymbol{\ensuremath{\Box}} 
+\newtheorem*{note}{Poznámka}
+
+\def\qed{\includegraphics[width=1.5cm]{\cestaFiles Figures/Proved}}
+\theorembodyfont{\normalfont}
+\theoremseparator{\normalfont{\?:}}
+\theoremsymbol{\qed} 
+\newtheorem*{proof}{Dùkaz}
+
+\theorembodyfont{\normalfont}
+\theoremsymbol{}
+\theoremseparator{\?:}
+\newtheorem{example}{Úloha}[chapter]
+
+\theoremheaderfont{\em}
+\theorembodyfont{\normalfont}
+\theoremseparator{\normalfont{\?:}}
+\theoremsymbol{\ensuremath{\checkmark}} 
+\newtheorem*{solution}{Øeení}
+
+%\setlength\abovecaptionskip{1mm}
+%\setlength\belowcaptionskip{1mm}
+%-----<<< PAGE, TITLE AND SECTION DEFINITION >>>-----
+%-----<<< ---------------------------------- >>>-----
+
+
+
+%-----<<< ---------- >>>-----
+%-----<<< TITLE PAGE >>>-----
+\def \BookHeadDP {
+    \begin{center}
+        \Large{\textbf{\HEAD}}\\
+        \large{\textbf{Obor è. \StudyFieldNumber\?: \StudyField}}\\
+
+        %\vspace{2cm}
+        %\begin{figure}[H]
+        %\begin{center}
+        %  {\includegraphics[width=5cm]{\cestaFiles Figures/COP}}
+        %\end{center}
+        %\end{figure}
+        \vspace{6cm}
+
+        \LARGE{\textbf{\Bookname}} \\[4ex]
+        \LARGE{\textbf{\BooknameEN}} \\[1ex]
+        
+        \vfill
+    \end{center}
+
+    \begin{tabular}{ll}
+        Autor\?: & \Author\\
+        kola\?: & \SCHOOL\\
+        {} & \FACULTY\\
+        Kraj\?: & Jihoèeský kraj\\
+        Konzultant\?: & \Supervisor\\
+        \Place, \Year
+    \end{tabular}
+    \vglue 1cm
+    }
+%-----<<< TITLE PAGE >>>-----
+%-----<<< ---------- >>>-----
+
+
+
+%-----<<< ------ >>>-----
+%-----<<< MACROS >>>-----
+\def\?{\kern.07em}                      %inseparable space, for instance before colon, semicolon, question mark, ...
+\mathchardef\.="013B                    %space after decimal point
+%\mathcode`\,="013B
+
+\newcommand{\quantity}[2]{#1~[#2]}          %physics variables with unit
+\def\fracc#1#2{{\displaystyle{#1\over#2}}\,}%redefinition of fraction (normal size)
+\def\frac#1#2{{\begingroup#1\endgroup\over#2}\,}
+\newcommand{\e}[1]{e^{\displaystyle #1}}    %exponential
+\newcommand{\Lap}{\mathcal{L}}              %Laplace operator
+\newcommand{\Ztf}{\mathcal{Z}}              %Laplace operator
+\def\rank{\qopname\relax n{hod}}            %rank of matrix
+\newcommand{\PID}[2]{#1_{_{#2}}}            %smaller subscript at PID controllers gains
+
+%-----<<< References to tables, figures and sections
+%\newcommand{\eqref}[1]{\mbox{(\ref{#1})}}
+\newcommand{\tabref}[1]{tab.~\mbox{\ref{#1}}}
+\newcommand{\figref}[1]{obr.~\mbox{\ref{#1}}}
+\newcommand{\charef}[1]{kapitola~\mbox{\ref{#1}}}
+\newcommand{\dcvref}[2]{\mbox{\ref{#1}}\?: #2\?;\,\,\,}
+%>>>-----
+
+%-----<<< SETS
+\DeclareFontFamily{OT1}{mnozina}{}
+%\DeclareFontShape{OT1}{mnozina}{m}{n}{ <10> <12> msbm10 }{}
+\DeclareFontShape{OT1}{mnozina}{m}{n}{ <6> msbm7 <8> msbm9 <10> <12> msbm10}{}
+\DeclareSymbolFont{matsym}{OT1}{mnozina}{m}{n}
+\DeclareMathSymbol{\N}{\mathord}{matsym}{78}
+\DeclareMathSymbol{\Z}{\mathord}{matsym}{90}
+\DeclareMathSymbol{\Q}{\mathord}{matsym}{81}
+\DeclareMathSymbol{\R}{\mathord}{matsym}{82}
+%\DeclareMathSymbol{\C}{\mathord}{matsym}{67}
+%>>>-----
+
+%-----<<< Matrices (bold and italic)
+%\newcommand{\mat}[1]{{\bf #1}}              %bold matrix
+%\newcommand{\matt}[1]{{\pmb{#1}}}           %bold matrix for Greek
+\newcommand{\mat}[1]{\mbox{\boldmath $#1$}} %bold italic matrix
+\newcommand{\matt}[1]{\pmb{\mathit #1}}     %bold italic matrix for Greek
+\newcommand{\matit}[1]{\mathit #1}          %italic for Greek
+\newcommand{\pruh}[1]{\overline{#1}}        %overline na matrix
+%>>>-----
+
+%-----<<< Czech quotation marks
+\DeclareTextCommandDefault\clqq{\leavevmode
+  \set@low@box{''}%
+  \setbox1=\hbox{l\/}\dimen1=\wd1
+  \setbox1=\hbox{l}\advance\dimen1 by -\wd1
+  \ifdim\dimen1>0pt\kern-.1em\box0\kern.1em
+    \else\kern.1em\box0\kern-.1em\fi\nobreak\hskip0pt}
+\DeclareTextCommandDefault\crqq{\edef\@SF{\spacefactor\the\spacefactor}%
+  \nobreak\kern-.07em\hbox{``}\kern.07em\@SF\relax}
+\def\uv#1{\clqq#1\crqq}
+%>>>-----
+
+%-----<<< MACROS >>>-----
+%-----<<< ------ >>>-----
+
+
+
+%-----<<< ---------------- >>>-----
+%-----<<< COLOR DEFINITION >>>-----
+\definecolor{gold}{rgb}{0.85,.66,0}         %color definition
+\definecolor{Gold}{rgb}{1.,0.84,0.}
+\definecolor{pink}{rgb}{1, 0.506, 0.82}
+\definecolor{brown}{rgb}{0.51, 0.337, 0}
+\definecolor{orange}{rgb}{0.984, 0.431, 0.341}
+\definecolor{gray}{rgb}{0.753, 0.753, 0.753}
+\definecolor{dred}{rgb}{0.78, 0, 0}
+\definecolor{dgreen}{rgb}{0, 0.6, 0}
+\definecolor{dblue}{rgb}{0, 0, 0.6}
+\definecolor{dmagenta}{rgb}{0.569, 0.098, 0.788}
+\definecolor{dgray}{rgb}{0.5, 0.5, 0.5}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+%-----<<< COLOR DEFINITION >>>-----
+%-----<<< ---------------- >>>-----
+
+
+
+%-----<<< ------ >>>-----
+%-----<<< MATLAB >>>-----
+\usepackage{fancybox}
+\usepackage{verbatim} 
+\newenvironment{matlab}[1]
+    {%
+    \VerbatimEnvironment%
+    \bigskip\par\begin{minipage}{#1}\scriptsize\begin{Verbatim}%
+    }
+    {
+    \end{Verbatim}%
+    \end{minipage}%
+    \indent\indent\bigskip\noindent\!\!%
+    }
+    
+
+\usepackage{listings}
+\lstset{frame=,
+    language=MATLAB,
+    aboveskip=3mm,
+    belowskip=3mm,
+    showstringspaces=false,
+    columns=flexible,
+    basicstyle={\footnotesize\ttfamily},
+    numbers=none,
+    numberstyle=\tiny\color{gray},
+    keywordstyle=\color{blue},
+    commentstyle=\color{dgreen},
+    stringstyle=\color{mauve},
+    breaklines=true,
+    breakatwhitespace=true,
+    tabsize=3
+    }    
+%-----<<< MATLAB >>>-----
+%-----<<< ------ >>>-----
+
+
+
+%-----<<< -------------------- >>>-----
+%-----<<< STYLE FOR REFERENCES >>>-----
+\def\bibTeX{\textsc{bib}\TeX}
+\renewcommand{\harvardand}{a}
+%-----<<< STYLE FOR REFERENCES >>>-----
+%-----<<< -------------------- >>>----- 

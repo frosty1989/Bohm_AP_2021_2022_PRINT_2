@@ -1,0 +1,320 @@
+%\documentclass[a4paper,12pt, draft]{report}                         %print on one side
+\documentclass[a4paper,12pt,twoside,notitlepage,openright]{report} %print on both side
+
+
+\usepackage[bookmarks=false, colorlinks=false,unicode]{hyperref}
+\usepackage[abbr,dcucite]{harvard}      %style ofliterature
+\usepackage{index}                      %make index
+%\makeindex
+\usepackage{Styles/COP}
+%\usepackage{showframe}                  %show edges of pages (for oneside, comment line 
+                                            %\setlength{\oddsidemargin}{5mm} in COP.sty)
+%%%%% HERE PUT ALL THE RELEVANT PACKAGES
+
+
+\usepackage{pdfpages} % pokud nemáte formulář "Zadání bak./dipl. práce" naskenovaný jako PDF, tak ZAKOMENTUJTE
+
+% path for figures
+\graphicspath{{img/}}
+
+\usepackage{epigraph}
+%\ setting the epigraph width
+\setlength{\epigraphwidth}{0.8\textwidth}
+
+\usepackage{graphicx} % balíček pro vkládání rastrových grafických souborů (PNG apod.)
+%\usepackage{epsfig} % balíčky pro vkládání grafických souborů typu EPS
+%\usepackage{float} % rozšířené možnosti umístění obrázků 
+
+\usepackage{grffile}
+
+% captions of figures
+\usepackage[font=small,labelfont=bf,width=1.0\textwidth]{caption}
+
+% csquotes for advanced quoting
+\usepackage{csquotes}
+
+% balíček pro vkládání rastrových grafických souborů (PNG apod.)
+\usepackage{graphicx} 
+
+\usepackage{tabularx} % rozšířené možnosti tabulek
+
+\usepackage{amsmath} % balíček pro pokročilou matematickou sazbu
+
+% for footnotes in tables
+\usepackage{booktabs,caption}
+\usepackage[flushleft]{threeparttable}
+
+% for table footnotes and captions
+\usepackage{caption}
+%% \usepackage{subcaption}
+
+
+%% Proofreading appendices not showing
+\usepackage[toc,page]{appendix}
+
+% for printing of units
+\usepackage{siunitx}
+\sisetup{load-configurations = abbreviations}
+
+% for printing of multiline comments
+\usepackage{verbatim}
+
+% package for simple quations
+\usepackage{dirtytalk}
+
+\usepackage{comment}
+
+\usepackage[sorting=none]{biblatex}
+\addbibresource{Refer.bib}
+
+\usepackage{tikz}
+\usetikzlibrary{shadows,calc}
+
+% some parameters for customization
+\def\shadowshift{3pt,-3pt}
+\def\shadowradius{6pt}
+
+\colorlet{innercolor}{black!60}
+\colorlet{outercolor}{gray!05}
+
+% this draws a shadow under a rectangle node
+\newcommand\drawshadow[1]{
+    \begin{pgfonlayer}{shadow}
+        \shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.south west)+(\shadowshift)+(\shadowradius/2,\shadowradius/2)$) circle (\shadowradius);
+        \shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.north west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$) circle (\shadowradius);
+        \shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.south east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$) circle (\shadowradius);
+        \shade[outercolor,inner color=innercolor,outer color=outercolor] ($(#1.north east)+(\shadowshift)+(-\shadowradius/2,-\shadowradius/2)$) circle (\shadowradius);
+        \shade[top color=innercolor,bottom color=outercolor] ($(#1.south west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$) rectangle ($(#1.south east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$);
+        \shade[left color=innercolor,right color=outercolor] ($(#1.south east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$) rectangle ($(#1.north east)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$);
+        \shade[bottom color=innercolor,top color=outercolor] ($(#1.north west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$) rectangle ($(#1.north east)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$);
+        \shade[outercolor,right color=innercolor,left color=outercolor] ($(#1.south west)+(\shadowshift)+(-\shadowradius/2,\shadowradius/2)$) rectangle ($(#1.north west)+(\shadowshift)+(\shadowradius/2,-\shadowradius/2)$);
+        \filldraw ($(#1.south west)+(\shadowshift)+(\shadowradius/2,\shadowradius/2)$) rectangle ($(#1.north east)+(\shadowshift)-(\shadowradius/2,\shadowradius/2)$);
+    \end{pgfonlayer}
+}
+
+% create a shadow layer, so that we don't need to worry about overdrawing other things
+\pgfdeclarelayer{shadow} 
+\pgfsetlayers{shadow,main}
+
+\newsavebox\mybox
+\newlength\mylen
+
+\newcommand\shadowimage[2][]{%
+\setbox0=\hbox{\includegraphics[#1]{#2}}
+\setlength\mylen{\wd0}
+\ifnum\mylen<\ht0
+\setlength\mylen{\ht0}
+\fi
+\divide \mylen by 120
+\def\shadowshift{\mylen,-\mylen}
+\def\shadowradius{\the\dimexpr\mylen+\mylen+\mylen\relax}
+\begin{tikzpicture}
+\node[anchor=south west,inner sep=0] (image) at (0,0) {\includegraphics[#1]{#2}};
+\drawshadow{image}
+\end{tikzpicture}}
+
+%-----<<<<<<<<<<<< NAMES NAD PATHS >>>>>>>>>>>>-----
+\def \Bookname {Postprocesor robota pro metodu Laser Shock Peening}
+\def \BooknameEN {Robot post processor for Laser ShockPeening technique}
+\def \Author {Marek Böhm}
+\def \Year {2022}
+
+
+
+% 0 - netiskne se, 1 - tiskne se 
+\def \APforPrint {0}
+
+\def \BookName {ABSOLVENTSKÁ PRÁCE}
+\def \HEAD {Vyšší odborná škola, Střední škola, Centrum odborné přípravy\\ Sezimovo Ústí}
+\def \SCHOOL {Vyšší odborná škola, Střední škola,}
+\def \FACULTY {Centrum odborné přípravy}
+\def \Place {Sezimovo Ústí}
+
+\def \cestaFiles {00_files/}
+\def \cestaJedna {01_Intro/}
+\def \cestaDva {02_Chapter2/}
+\def \cestaTri {03_Chapter3/}
+\def \cestaCtyri {04_Chapter4/}
+\def \cestaPet {05_Chapter5/}
+\def \cestaSest {06_Chapter6/}
+\def \cestaZaver {05_Concl/}
+\def \cestaAP {A_Appendices/}
+\def \cestaStyles {Styles/}
+
+\newindex{default}{idx}{ind}{Rejst\v r\'ik}
+
+\newcounter{YearOld} \setcounter{YearOld}{\Year} \addtocounter{YearOld}{-1}
+%-----<<< --------------------------------- >>>-----
+
+
+%% FUCKING LATEX AND ALL OF THIS BULLSHIT
+\makeatletter
+\setlength{\@fptop}{0pt}
+\makeatother
+
+%-----<<<<<<<<<<<< DOCUMENT >>>>>>>>>>>>-----
+\begin{document}
+
+%-----<<< BINDING >>>-----
+\iffalse
+\pagestyle{empty}                       %no pagination
+\input{\cestaFiles Binding.tex}         %input file
+\cleardoublepage
+
+%-----<<< ------- >>>-----
+
+
+%-----<<< EMPTY PAGE - VAKÁT >>>-----
+%\thispagestyle{empty}
+\begin{verbatim}
+
+\end{verbatim}
+\cleardoublepage
+\fi
+%-----<<< --------------------- >>>-----
+
+
+%-----<<< TITLE PAGE >>>-----
+\pagestyle{empty}                       %no pagination
+\BookHeadDP
+\cleardoublepage
+\clearpage
+%-----<<< ---- >>>-----
+
+
+%-----<<< TASK AP >>>-----
+\pagestyle{plain}                       %pagination
+\pagenumbering{roman}                   %start roman pagination from 1
+$ $
+\input{\cestaFiles Task.tex}            %input file
+\cleardoublepage
+%-----<<< ------------------------- >>>-----
+
+
+%-----<<< DECLARATION >>>-----
+$ $
+\input{\cestaFiles Declar.tex}          %input file
+\newpage
+%-----<<< ----------- >>>-----
+
+
+%-----<<< ACKNOWLEDGEMENT >>>-----
+$ $
+\input{\cestaFiles Acknow.tex}          %input file
+\newpage
+%-----<<< --------------- >>>-----
+
+
+%-----<<< ANNOTATION >>>-----
+\input{\cestaFiles Annotation.tex}      %input file
+\cleardoublepage
+%-----<<< ---------- >>>-----
+
+
+%-----<<< TABLE OF CONTENTS >>>-----
+\setcounter{secnumdepth}{4}             %number of section to 4
+\setcounter{tocdepth}{4}                %number of section in table of contents greater then 3
+\tableofcontents
+\cleardoublepage
+%-----<<< ----------------- >>>-----
+
+
+%-----<<< USABLE SYMBOLS >>>-----
+% \input{\cestaFiles Symbols.tex}
+% \cleardoublepage
+%-----<<< ----------------- >>>-----
+
+
+%-----<<< TABLE OF FIGURES >>>-----
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\cleardoublepage
+%-----<<< ---------------- >>>-----
+
+
+%-----<<< TABLE OF TABLES >>>-----
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\cleardoublepage
+%-----<<< --------------- >>>-----
+
+
+%-----<<< CHAPTERS >>>-----
+\pagenumbering{arabic}                  %start arabic pagination from 1
+\hyphenation{Automatica}                %no divide words
+\pagestyle{headings}
+\setcounter{footnote}{0}
+
+\input{\cestaJedna Intro.tex}           %input file
+\input{\cestaDva Chapter2.tex}
+\input{\cestaTri Chapter3.tex}
+\input{\cestaCtyri Chapter4.tex}
+\input{\cestaPet Chapter5.tex}
+\input{\cestaSest Chapter6.tex}
+\input{\cestaZaver Concl.tex}
+%-----<<< -------- >>>-----
+
+
+%-----<<< REFERENCES >>>-----
+%\bibliograp
+
+%% hystyle{\cestaStyles COP}
+%\bibliography{\cestaStyles Refer,\cestaStyles Refer_BP}%references from BIBTEX
+
+\addcontentsline{toc}{chapter}{Bibliography}
+\printbibliography
+% Biblatex package for references
+
+%\iffalse
+
+%\input{\cestaStyles Refer.tex}          %input file
+
+%\fi
+\newpage\thispagestyle{empty}
+%-----<<< ---------- >>>-----
+
+
+
+%-----<<< APPENDIXS >>>-----
+\cleardoublepage
+%\addcontentsline{toc}{chapter}{Appendices}
+\def\appendixname{Appendix}
+\pagenumbering{Roman}                   %start arabic pagination from 1
+
+% ALTERNATIVE
+%\appendix
+\begin{appendices}
+
+
+%-----<<< --------- >>>-----
+%\begin{appendix}
+%-----<<< --------- >>>-----
+
+%% \addcontentsline{toc}{chapter}{Appendix A}
+%\input{\cestaAP AppendAnother.tex}           %input file
+%\input{\cestaAP AppendCD.tex}           %input file
+\input{\cestaAP AppendCD.tex}           %input file
+\input{\cestaAP AppendSW.tex}           %input file
+\input{\cestaAP AppendPlan.tex}         %input file
+\input{\cestaAP AppendSymbol.tex}         %input file
+%% \input{\cestaAP AppendTime.tex}         %input file
+%% \input{\cestaAP AppendBudget.tex}       %input file
+%\input{\cestaAP AppendCD.tex}           %input file
+%% TYTO TRI ODKOMENTOVAT, AZ S TIM BUDU DALE PRACOVAT
+
+%\input{Styles/Manual_tex.tex}           %input file
+%\input{Styles/Manual_typo.tex}          %input file
+%\input{Styles/Manual_final.tex}         %input file
+
+%-----<<< --------- >>>-----
+%\end{appendix}
+%-----<<< --------- >>>-----
+
+% ALTERNATIVE
+\end{appendices}
+
+
+%-----<<< ----- >>>-----
+
+\end{document}
+%-----<<<<<<<<< END OF DOCUMENT >>>>>>>>>----- 
